@@ -23,7 +23,8 @@ RUN cd client_app && \
 
 ENV REDIS_URL redis://redis:6379
 ENV POSTGRES_URL postgres://postgres:postgres@postgres:5432/postgres
-CMD ["/sbin/my_init"]
+RUN chmod +x /var/yourprio/wait-for-it.sh
+#RUN ["/sbin/my_init"]
 CMD ["/var/yourprio/wait-for-it.sh", "postgres:5432", "--", "./start"]
 
 # WORKDIR /tmp/gems
